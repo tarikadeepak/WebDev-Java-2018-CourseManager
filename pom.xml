@@ -11,7 +11,6 @@
 	<groupId>com.example</groupId>
 	<artifactId>webdev-summer-2018</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
 	<name>webdev-summer-2018</name>
 	<description>WebDev Project</description>
 
