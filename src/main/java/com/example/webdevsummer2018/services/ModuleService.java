@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +16,19 @@ import com.example.webdevsummer2018.repositories.CourseRepository;
 import com.example.webdevsummer2018.repositories.ModuleRepository;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge=3600)
 public class ModuleService {
 	@Autowired
 	CourseRepository courseRepository;
 	@Autowired
 	ModuleRepository moduleRepository;
-	@PostMapping("api/course/{courseID}/module")
+	
+	@GetMapping("api/course/{courseId}/module")
+	public Iterable<Module> findAllCourses(@PathVariable("courseId") int courseId){
+		System.out.println("Hello : " + courseId);
+		return moduleRepository.findByCourse_Id(courseId);
+	}
+	@PostMapping("api/course/{courseId}/module")
 	public Module createModule(
 			@PathVariable("courseId") int courseId,
 			@RequestBody Module newModule) {
