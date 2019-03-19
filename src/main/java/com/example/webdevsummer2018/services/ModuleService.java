@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,11 +34,19 @@ public class ModuleService {
 			@PathVariable("courseId") int courseId,
 			@RequestBody Module newModule) {
 		Optional<Course> data = courseRepository.findById(courseId);
+		System.out.println("Inside Create");
 		if(data.isPresent()) {
 			Course course = data.get();
 			newModule.setCourse(course);
 			return moduleRepository.save(newModule);
 		}
 		return null;
+	}
+	@DeleteMapping("api/course/{courseId}/module/{moduleId}")
+	public void deleteModule(		
+			@PathVariable("moduleId") int moduleId, @PathVariable("courseId") int courseId) {
+		System.out.println("Inside DeleteModule : " + courseId + " " + moduleId);	
+		 moduleRepository.deleteById(moduleId);
+			
 	}
 }
