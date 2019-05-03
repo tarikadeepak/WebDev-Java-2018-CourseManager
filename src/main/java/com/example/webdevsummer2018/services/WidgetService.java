@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.webdevsummer2018.models.Module;
 import com.example.webdevsummer2018.models.Widget;
 import com.example.webdevsummer2018.repositories.WidgetRepository;
 
@@ -26,9 +27,9 @@ public class WidgetService {
 	}
 	
 	@GetMapping("/api/widget/{moduleId}")
-	public Optional<Widget> findWidgetsById(		
+	public Iterable<Widget> findWidgetsById(		
 			@PathVariable("moduleId") int moduleId){
-		return widgetRepository.findById(moduleId);
+		return widgetRepository.findByModule_Id(moduleId);
 	}
 	
 	@PostMapping("/api/widget/save")
