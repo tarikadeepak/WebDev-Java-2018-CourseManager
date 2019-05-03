@@ -16,6 +16,13 @@ public class Widget {
 	private String widgetType;
 	private String src;
 	private String items;
+	private int moduleId;
+	public int getModuleId() {
+		return moduleId;
+	}
+	public void setModuleId(int moduleId) {
+		this.moduleId = moduleId;
+	}
 	public String getDtype() {
 		return dtype;
 	}

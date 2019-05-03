@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.example.webdevsummer2018.models.Widget;
 
 public interface WidgetRepository extends CrudRepository<Widget, Integer> {
-	List<Widget> findBymodule_id(int moduleId);
+	List<Widget> findByModule_Id(int moduleId);
 }
