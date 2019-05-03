@@ -26,10 +26,10 @@ public class WidgetService {
 		return (List<Widget>)widgetRepository.findAll();
 	}
 	
-	@GetMapping("/api/widget/{moduleId}")
+	@GetMapping("/api/widget/{id}")
 	public Iterable<Widget> findWidgetsById(		
-			@PathVariable("moduleId") int moduleId){
-		return widgetRepository.findByModule_Id(moduleId);
+			@PathVariable("id") int id){
+		return widgetRepository.findWidgetBy_id(id);
 	}
 	
 	@PostMapping("/api/widget/save")
